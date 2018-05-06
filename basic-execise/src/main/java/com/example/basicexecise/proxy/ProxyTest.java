@@ -11,6 +11,7 @@ public class ProxyTest {
                 target.getClass().getInterfaces(),
                 handler);
         proxy.sayHello();
+        System.out.println(proxy.getClass());
 
 
     }
