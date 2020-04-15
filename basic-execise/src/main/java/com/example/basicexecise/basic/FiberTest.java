@@ -19,7 +19,7 @@ public class FiberTest {
                 if (counter.get() == FiberNumber) {
                     System.out.println("done");
                 }
-                Strand.sleep(1000000);
+                Strand.sleep(10);
             }).start();
         }
         latch.await();
