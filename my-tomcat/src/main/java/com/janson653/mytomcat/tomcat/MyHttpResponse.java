@@ -8,7 +8,7 @@ import java.io.OutputStream;
 public class MyHttpResponse {
     public static final int BUFFER_SIZE = 2048;
     // 浏览器默认访问 download内容
-    private static final String WEB_ROOT = "/home/janson/Downloads";
+    private static final String WEB_ROOT = "C:\\Users\\janson\\Downloads";
     private MyHttpRequest request;
     private OutputStream output;
 

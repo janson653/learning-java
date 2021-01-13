@@ -5,7 +5,7 @@ public class Client {
         Human human = new Human();
         human.setCurrentState(Human.CHILD_STATE);
         human.work();
-        //human.work();
-        //human.work();
+//        human.work();
+//        human.work();
     }
 }

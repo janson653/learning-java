@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class MyHttpServer {
-    private boolean shutdown = false;
+    private volatile boolean shutdown = false;
 
     public void acceptWait() {
         System.out.println("等待接听");
