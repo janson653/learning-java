@@ -1,4 +1,4 @@
-package com.janson653.nettydemo.simple;
+package com.janson653.nettydemo.nativejdk;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +29,11 @@ public class Server {
             System.err.println("server started");
             while (true) {
                 try {
+                    System.out.println(Thread.currentThread().getState() + ", before accept");
+
                     Socket accept = socket.accept();
+                    System.out.println(Thread.currentThread().getState() + ", after accept");
+
                     InputStream inputStream = accept.getInputStream();
                     byte[] bytes = inputStream.readAllBytes();
 
