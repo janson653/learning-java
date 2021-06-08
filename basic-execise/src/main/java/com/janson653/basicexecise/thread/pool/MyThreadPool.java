@@ -82,6 +82,12 @@ public class MyThreadPool {
     }
 
     public Runnable getTask() {
-        return taskQueue.poll();
+//        return taskQueue.poll();
+        try {
+            return taskQueue.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -18,11 +18,11 @@ public class JCUTest {
         for(int i= 1; i < 10; i++) {
             threadPool.execute(() -> {
                 System.out.println("你好，线程" + Thread.currentThread().getName());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(10);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             });
         }
 

@@ -1,4 +1,4 @@
-package com.janson653.basicexecise.thread;
+package com.janson653.basicexecise.thread.pool;
 
 /**
  * @author zhangqian

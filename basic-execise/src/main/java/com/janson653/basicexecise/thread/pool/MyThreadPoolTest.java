@@ -8,15 +8,21 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class MyThreadPoolTest {
     public static void main(String[] args) {
-        MyThreadPool myThreadPool = new MyThreadPool(4, new ArrayBlockingQueue<>(20), 1);
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.err.println("线程【" + t.getName() + "】发生异常，原因:" + e.getMessage());
+            }
+        });
+        MyThreadPool myThreadPool = new MyThreadPool(4, new ArrayBlockingQueue<>(20), 2);
 
         Thread.currentThread().setName("主线程");
 
         for (int i = 1; i <= 100; i++) {
             int finalI = i;
             myThreadPool.execute(() -> {
-                System.out.println("线程" + Thread.currentThread().getName() + "执行任务" + finalI);
                 try {
+                    System.out.println("线程" + Thread.currentThread().getName() + "执行任务" + finalI);
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
