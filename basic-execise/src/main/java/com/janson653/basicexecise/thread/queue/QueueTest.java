@@ -2,9 +2,7 @@ package com.janson653.basicexecise.thread.queue;
 
 import org.springframework.util.StopWatch;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -13,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class QueueTest {
     static AtomicInteger eventId = new AtomicInteger(1);
-    static int TOTAL_EVENT_NUM = 1000000;
+    static int TOTAL_EVENT_NUM = 10000_0000;
     static int THREAD_NUM = 16;
     static int EACH_THREAD_NUM = TOTAL_EVENT_NUM / THREAD_NUM;
 
@@ -21,8 +19,8 @@ public class QueueTest {
 
         CountDownLatch consumerLatch = new CountDownLatch(TOTAL_EVENT_NUM);
         // given: queue, producer, consumer
-//        BlockingQueue<String> queue = new ArrayBlockingQueue<>(100);
-        BlockingQueue<String> queue = new SynchronousQueue();
+        BlockingQueue<String> queue = new ArrayBlockingQueue<>(1024*1024);
+//        BlockingQueue<String> queue = new SynchronousQueue();
 
 
         StopWatch stopWatch = new StopWatch();
@@ -86,7 +84,7 @@ public class QueueTest {
                 while (true) {
                     String event = queue.take();
                     System.out.println("consume event:" + event);
-                    Thread.sleep(10);
+//                    Thread.sleep(10);
                     countDownLatch.countDown();
                 }
             } catch (InterruptedException e) {
