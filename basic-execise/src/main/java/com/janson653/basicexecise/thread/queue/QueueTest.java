@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class QueueTest {
     static AtomicInteger eventId = new AtomicInteger(1);
-    static int TOTAL_EVENT_NUM = 10000_0000;
+    static int TOTAL_EVENT_NUM = 100_0000;
     static int THREAD_NUM = 16;
     static int EACH_THREAD_NUM = TOTAL_EVENT_NUM / THREAD_NUM;
 
@@ -84,7 +84,7 @@ public class QueueTest {
                 while (true) {
                     String event = queue.take();
                     System.out.println("consume event:" + event);
-//                    Thread.sleep(10);
+                    Thread.sleep(1);
                     countDownLatch.countDown();
                 }
             } catch (InterruptedException e) {
